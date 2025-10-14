@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tablet Locker & Disperser - Lock, Vest, and Send tokens on PulseChain">
+    <meta name="keywords" content="PulseChain, meme coin, drawing NFT, mint doodle, tablet token, crypto art toy, on-chain fun, $TABLET">
+    <meta name="author" content="PulseChain Tablet">
+    
+    <!-- Open Graph / Social Media Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Tablet Locker & Disperser - Lock, Vest, and Send tokens on PulseChain">
+    <meta property="og:description" content="Lock, Vest, and Send tokens using PLS or TABLET!">
+    <meta property="og:url" content="https://pulsechaintablet.com/">
+    <meta property="og:image" content="https://pulsechaintablet.com/images/tablet.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Pulse Tablet Logo">
+    <meta property="og:site_name" content="Pulse Tablet">
+    <meta property="fb:app_id" content="">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tablet Locker & Disperser - Lock, Vest, and Send tokens on PulseChain">
+    <meta name="twitter:description" content="Lock, Vest, and Send tokens using PLS or TABLET!">
+    <meta name="twitter:image" content="https://pulsechaintablet.com/images/tablet.jpg">
+  
+    <link rel="icon" href="images/tablet.ico">
+    <title>Tablet Utilities - Token Locker & Disperser</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #111;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            border-bottom: 2px solid #00ffcc;
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #00ffcc, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 14px;
+        }
+
+        .nav-link:hover {
+            color: #00ffcc;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 60px 20px;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(0, 255, 204, 0.1) 0%, transparent 100%);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #00ffcc, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #ccc;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Utility Cards Container */
+        .utilities-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+            gap: 40px;
+        }
+
+        /* Utility Card */
+        .utility-card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            border: 2px solid #00ffcc;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(0, 255, 204, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .utility-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 40px rgba(0, 255, 204, 0.3);
+        }
+
+        .utility-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0, 255, 204, 0.3);
+        }
+
+        .utility-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #00ffcc, #4ecdc4);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .utility-title h2 {
+            font-size: 24px;
+            color: #00ffcc;
+            margin-bottom: 5px;
+        }
+
+        .utility-title p {
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #00ffcc;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(0, 255, 204, 0.3);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00ffcc;
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* Payment Type Selector */
+        .payment-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .payment-option {
+            flex: 1;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(0, 255, 204, 0.3);
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .payment-option:hover {
+            background: rgba(0, 255, 204, 0.1);
+        }
+
+        .payment-option.active {
+            background: rgba(0, 255, 204, 0.2);
+            border-color: #00ffcc;
+        }
+
+        .payment-option input[type="radio"] {
+            display: none;
+        }
+
+        .payment-label {
+            display: block;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .payment-desc {
+            font-size: 11px;
+            color: #ccc;
+            margin-top: 4px;
+        }
+
+        /* Action Button */
+        .action-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, #00ffcc, #4ecdc4);
+            border: none;
+            border-radius: 8px;
+            color: #000;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 255, 204, 0.4);
+        }
+
+        .action-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: rgba(0, 255, 204, 0.1);
+            border: 1px solid rgba(0, 255, 204, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .info-box h3 {
+            color: #00ffcc;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .info-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-box li {
+            color: #ccc;
+            font-size: 13px;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .info-box li:before {
+            content: "▶";
+            position: absolute;
+            left: 0;
+            color: #00ffcc;
+        }
+
+        /* Contract Address */
+        .contract-address {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 255, 204, 0.3);
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contract-address span {
+            font-family: monospace;
+            font-size: 12px;
+            color: #00ffcc;
+            word-break: break-all;
+        }
+
+        .copy-btn {
+            background: rgba(0, 255, 204, 0.2);
+            border: 1px solid #00ffcc;
+            border-radius: 4px;
+            padding: 6px 12px;
+            color: #00ffcc;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            background: rgba(0, 255, 204, 0.3);
+        }
+
+        /* Recipients List for Disperser */
+        .recipients-container {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(0, 255, 204, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .recipient-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr auto;
+            gap: 10px;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+
+        .recipient-row input {
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 204, 0.3);
+            border-radius: 6px;
+            color: #fff;
+            font-size: 13px;
+        }
+
+        .add-recipient-btn,
+        .remove-recipient-btn {
+            padding: 10px 15px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+
+        .add-recipient-btn {
+            background: rgba(0, 255, 204, 0.2);
+            color: #00ffcc;
+            border: 1px solid #00ffcc;
+        }
+
+        .add-recipient-btn:hover {
+            background: rgba(0, 255, 204, 0.3);
+        }
+
+        .remove-recipient-btn {
+            background: rgba(255, 107, 107, 0.2);
+            color: #ff6b6b;
+            border: 1px solid #ff6b6b;
+            padding: 10px;
+        }
+
+        .remove-recipient-btn:hover {
+            background: rgba(255, 107, 107, 0.3);
+        }
+
+        /* Wallet Connection */
+        .wallet-section {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 999;
+        }
+
+        .connect-wallet-btn {
+            padding: 12px 24px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .connect-wallet-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .connected-wallet {
+            background: rgba(0, 255, 204, 0.1);
+            border: 2px solid #00ffcc;
+            border-radius: 8px;
+            padding: 10px 15px;
+            color: #00ffcc;
+            font-family: monospace;
+            font-size: 12px;
+        }
+
+        /* Loading Spinner */
+        .loading-spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(0, 255, 204, 0.3);
+            border-top: 2px solid #00ffcc;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .utilities-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .wallet-section {
+                position: static;
+                margin: 20px;
+            }
+
+            .recipient-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Success/Error Messages */
+        .message {
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .message.success {
+            background: rgba(0, 255, 204, 0.2);
+            border: 1px solid #00ffcc;
+            color: #00ffcc;
+        }
+
+        .message.error {
+            background: rgba(255, 107, 107, 0.2);
+            border: 1px solid #ff6b6b;
+            color: #ff6b6b;
+        }
+
+        .message.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">TABLET Token Locker & Disperser</div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Tablet Utilities</h1>
+        <p>Secure token management tools for the PulseChain ecosystem. Lock your tokens with vesting schedules or distribute tokens to multiple recipients efficiently.</p>
+    </section>
+
+    <!-- Wallet Connection -->
+    <div class="wallet-section">
+        <button class="connect-wallet-btn" id="connectWallet">Connect Wallet</button>
+        <div class="connected-wallet" id="connectedWallet" style="display: none;">
+            <span id="walletAddress"></span>
+        </div>
+    </div>
+
+    <!-- Utilities Container -->
+    <div class="utilities-container">
+        <!-- Token Locker Card -->
+        <div class="utility-card">
+            <div class="utility-header">
+                <div class="utility-icon">🔒</div>
+                <div class="utility-title">
+                    <h2>Token Locker</h2>
+                    <p>Lock tokens with customizable vesting periods</p>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h3>Features</h3>
+                <ul>
+                    <li>Vesting periods: 30-365 days</li>
+                    <li>Multiple payment options: PLS, TABLET, or % fee</li>
+                    <li>Secure time-locked smart contract</li>
+                    <li>Support for any PRC20 token</li>
+                    <li>Maximum 100 locks per user</li>
+                </ul>
+            </div>
+
+            <div class="message" id="lockerMessage"></div>
+
+            <form id="lockerForm">
+                <div class="form-group">
+                    <label>Token Address</label>
+                    <input type="text" id="lockTokenAddress" placeholder="0x..." required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Amount to Lock</label>
+                        <input type="number" id="lockAmount" placeholder="1000" step="any" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Vesting Period (days)</label>
+                        <input type="number" id="lockDays" placeholder="30-365" min="30" max="365" required>
+                    </div>
+                </div>
+
+                <label style="color: #00ffcc; margin-bottom: 10px; display: block;">Payment Method</label>
+                <div class="payment-selector">
+                    <div class="payment-option active" data-type="pls">
+                        <input type="radio" name="lockPayment" id="lockPls" value="pls" checked>
+                        <label for="lockPls" class="payment-label">
+                            PLS Fee
+                            <div class="payment-desc">Pay in PLS</div>
+                        </label>
+                    </div>
+                    <div class="payment-option" data-type="tablet">
+                        <input type="radio" name="lockPayment" id="lockTablet" value="tablet">
+                        <label for="lockTablet" class="payment-label">
+                            TABLET Fee
+                            <div class="payment-desc">Burn TABLET</div>
+                        </label>
+                    </div>
+                    <div class="payment-option" data-type="percentage">
+                        <input type="radio" name="lockPayment" id="lockPercentage" value="percentage">
+                        <label for="lockPercentage" class="payment-label">
+                            % Fee
+                            <div class="payment-desc">Pay % of tokens</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group" id="percentageInput" style="display: none;">
+                    <label>Fee Percentage (1-50%)</label>
+                    <input type="number" id="lockFeePercentage" placeholder="5" min="1" max="50">
+                </div>
+
+                <button type="submit" class="action-btn">
+                    Lock Tokens
+                </button>
+            </form>
+
+        </div>
+
+        <!-- Token Disperser Card -->
+        <div class="utility-card">
+            <div class="utility-header">
+                <div class="utility-icon">💸</div>
+                <div class="utility-title">
+                    <h2>Token Disperser</h2>
+                    <p>Distribute tokens to multiple recipients</p>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h3>Features</h3>
+                <ul>
+                    <li>Send to up to 200 recipients</li>
+                    <li>Batch token distribution</li>
+                    <li>Multiple payment options</li>
+                    <li>Gas-efficient multi-send</li>
+                    <li>Support for any ERC20 token</li>
+                </ul>
+            </div>
+
+            <div class="message" id="disperserMessage"></div>
+
+            <form id="disperserForm">
+                <div class="form-group">
+                    <label>Token Address</label>
+                    <input type="text" id="disperseTokenAddress" placeholder="0x..." required>
+                </div>
+
+                <label style="color: #00ffcc; margin-bottom: 10px; display: block;">Recipients</label>
+                <div class="recipients-container" id="recipientsContainer">
+                    <div class="recipient-row">
+                        <input type="text" placeholder="Recipient address" class="recipient-address">
+                        <input type="number" placeholder="Amount" class="recipient-amount" step="any">
+                        <button type="button" class="remove-recipient-btn" onclick="removeRecipient(this)">✕</button>
+                    </div>
+                </div>
+                <button type="button" class="add-recipient-btn" onclick="addRecipient()">+ Add Recipient</button>
+
+                <label style="color: #00ffcc; margin: 20px 0 10px; display: block;">Payment Method</label>
+                <div class="payment-selector">
+                    <div class="payment-option active" data-type="pls">
+                        <input type="radio" name="dispersePayment" id="dispersePls" value="pls" checked>
+                        <label for="dispersePls" class="payment-label">
+                            PLS Fee
+                            <div class="payment-desc">Pay in PLS</div>
+                        </label>
+                    </div>
+                    <div class="payment-option" data-type="tablet">
+                        <input type="radio" name="dispersePayment" id="disperseTablet" value="tablet">
+                        <label for="disperseTablet" class="payment-label">
+                            TABLET Fee
+                            <div class="payment-desc">Burn TABLET</div>
+                        </label>
+                    </div>
+                    <div class="payment-option" data-type="percentage">
+                        <input type="radio" name="dispersePayment" id="dispersePercentage" value="percentage">
+                        <label for="dispersePercentage" class="payment-label">
+                            % Fee
+                            <div class="payment-desc">Pay % of tokens</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group" id="dispersePercentageInput" style="display: none;">
+                    <label>Fee Percentage (1-50%)</label>
+                    <input type="number" id="disperseFeePercentage" placeholder="5" min="1" max="50">
+                </div>
+
+                <button type="submit" class="action-btn">
+                    Disperse Tokens
+                </button>
+            </form>
+
+        </div>
+    </div>
+
+    <script>
+        // Payment option selection for locker
+        document.querySelectorAll('#lockerForm .payment-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('#lockerForm .payment-option').forEach(opt => opt.classList.remove('active'));
+                this.classList.add('active');
+                this.querySelector('input[type="radio"]').checked = true;
+                
+                const percentageInput = document.getElementById('percentageInput');
+                if (this.dataset.type === 'percentage') {
+                    percentageInput.style.display = 'block';
+                } else {
+                    percentageInput.style.display = 'none';
+                }
+            });
+        });
+
+        // Payment option selection for disperser
+        document.querySelectorAll('#disperserForm .payment-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('#disperserForm .payment-option').forEach(opt => opt.classList.remove('active'));
+                this.classList.add('active');
+                this.querySelector('input[type="radio"]').checked = true;
+                
+                const percentageInput = document.getElementById('dispersePercentageInput');
+                if (this.dataset.type === 'percentage') {
+                    percentageInput.style.display = 'block';
+                } else {
+                    percentageInput.style.display = 'none';
+                }
+            });
+        });
+
+        // Add recipient function
+        function addRecipient() {
+            const container = document.getElementById('recipientsContainer');
+            const recipientCount = container.querySelectorAll('.recipient-row').length;
+            
+            if (recipientCount >= 200) {
+                showMessage('disperserMessage', 'Maximum 200 recipients allowed', 'error');
+                return;
+            }
+            
+            const newRow = document.createElement('div');
+            newRow.className = 'recipient-row';
+            newRow.innerHTML = `
+                <input type="text" placeholder="Recipient address" class="recipient-address">
+                <input type="number" placeholder="Amount" class="recipient-amount" step="any">
+                <button type="button" class="remove-recipient-btn" onclick="removeRecipient(this)">✕</button>
+            `;
+            container.appendChild(newRow);
+        }
+
+        // Remove recipient function
+        function removeRecipient(button) {
+            const container = document.getElementById('recipientsContainer');
+            const rows = container.querySelectorAll('.recipient-row');
+            
+            if (rows.length > 1) {
+                button.parentElement.remove();
+            } else {
+                showMessage('disperserMessage', 'At least one recipient is required', 'error');
+            }
+        }
+
+        // Copy address function
+        function copyAddress(type) {
+            const text = type === 'locker' ? '0x...locker_contract_address' : '0x...disperser_contract_address';
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = event.target;
+                const originalText = btn.textContent;
+                btn.textContent = 'Copied!';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                }, 2000);
+            });
+        }
+
+        // Show message function
+        function showMessage(elementId, message, type) {
+            const messageEl = document.getElementById(elementId);
+            messageEl.textContent = message;
+            messageEl.className = `message ${type} show`;
+            
+            setTimeout(() => {
+                messageEl.classList.remove('show');
+            }, 5000);
+        }
+
+        // Form submissions (placeholder - needs Web3 integration)
+        document.getElementById('lockerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            showMessage('lockerMessage', 'Wallet connection required. Please install MetaMask.', 'error');
+        });
+
+        document.getElementById('disperserForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            showMessage('disperserMessage', 'Wallet connection required. Please install MetaMask.', 'error');
+        });
+
+        // Wallet connection (placeholder - needs Web3 integration)
+        document.getElementById('connectWallet').addEventListener('click', async () => {
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    const address = accounts[0];
+                    document.getElementById('connectWallet').style.display = 'none';
+                    document.getElementById('connectedWallet').style.display = 'block';
+                    document.getElementById('walletAddress').textContent = 
+                        address.slice(0, 6) + '...' + address.slice(-4);
+                } catch (error) {
+                    alert('Failed to connect wallet');
+                }
+            } else {
+                alert('Please install MetaMask to use this feature');
+            }
+        });
+    </script>
+</body>
+</html>
